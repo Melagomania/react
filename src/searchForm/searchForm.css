@@ -1,0 +1,22 @@
+.search-form {
+  float: right;
+}
+
+.search-form__input {
+  vertical-align: top;
+
+  margin-right: 20px;
+  padding: 0 15px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  background-color: #005472;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+
+.search-form__button:hover {
+  background-color: #004a62;
+}
