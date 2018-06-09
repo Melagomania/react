@@ -23,21 +23,21 @@ class App extends React.Component {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
 
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState === 4 && xhr.status === 200) {
         _this.setState({
           books: JSON.parse(xhr.responseText).items
         });
       }
-    }
+    };
 
     xhr.send();
   }
 
-  moveBook(e) {
+  addBook(e) {
     for (let i = 0; i < this.state.books.length; i++) {
-      if (this.state.books[i].id === e.target.dataset.bookId) {
-        for(let j = 0; j < this.state.myBooks.length; j++) {
+      if(this.state.books[i].id === e.target.dataset.bookId) {
+        for (let j = 0; j < this.state.myBooks.length; j++) {
           if(this.state.myBooks[j].id === e.target.dataset.bookId) {
             return;
           }
@@ -47,6 +47,12 @@ class App extends React.Component {
         });
       }
     }
+  }
+
+  removeBook(e) {
+    this.setState({
+      myBooks: this.state.myBooks.filter((book) => !(book.id === e.target.dataset.bookId))
+    });
   }
 
   render() {
@@ -62,7 +68,8 @@ class App extends React.Component {
             {this.state.books.map((book) => {
               return (
                 <li className="books-list__item">
-                  <Book book={book} onClk={this.moveBook.bind(this)}/>
+                  <Book book={book} onClk={this.addBook.bind(this)}
+                        button="Add"/>
                 </li>
               )
             })}
@@ -71,8 +78,9 @@ class App extends React.Component {
             {
               this.state.myBooks.map((book) => {
                 return (
-                  <li className="books-list__item">
-                    <Book book={book} onClk={this.moveBook.bind(this)}/>
+                  <li key={book.id} className="books-list__item">
+                    <Book book={book} onClk={this.removeBook.bind(this)}
+                          button="Remove"/>
                   </li>
                 )
               })}

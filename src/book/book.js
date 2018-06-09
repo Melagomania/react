@@ -2,10 +2,6 @@ import React from 'react';
 import './book.css';
 
 class Book extends React.Component {
-  constructor() {
-    super();
-  }
-
   render() {
 
     let bookInfo = this.props.book.volumeInfo;
@@ -20,7 +16,8 @@ class Book extends React.Component {
           <Image src={bookInfo.imageLinks}/>
           <Description description={bookInfo.description}/>
         </div>
-        <button onClick={this.props.onClk} data-book-id={bookId} className="button book__button">Add</button>
+        <button onClick={this.props.onClk} data-book-id={bookId}
+                className="button book__button">{this.props.button}</button>
       </article>
     );
   }

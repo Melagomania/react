@@ -18,22 +18,18 @@ body {
   font-family: sans-serif;
 }
 
+.main-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
 .header {
   background-color: #001f32;
   padding: 20px 0;
   margin-bottom: 30px;
 }
 
-.main-wrapper {
-  max-width: 980px;
-  margin: 0 auto;
-}
-
-.books-list__item {
-  margin-bottom: 40px;
-  padding: 20px 15px;
-  border: 1px solid #ccc;
-}
 
 .button {
   height: 40px;
@@ -49,5 +45,11 @@ body {
 
 .button:hover {
   background-color: #004a62;
+}
+
+.button:active {
+  background-color: #003851;
+  padding-right: 12px;
+  padding-top: 1px;
 }
 
